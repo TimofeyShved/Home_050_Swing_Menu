@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //-------------------------------------------------------------------------------Menu--------------------------------------------------
+        //-------------------------------------------------------------------Menu--------------------------------------------------
         JMenuBar jMenuBar = new JMenuBar(); // создание основного меню
 
         JMenu file = new JMenu("File"); // создаем вкладки
@@ -59,8 +59,7 @@ public class Main {
         jFrame.setJMenuBar(jMenuBar); // добавление меню на наш фрейм(окно/программу)
         jFrame.revalidate(); // обновить прорисовку компонентов
 
-        //-------------------------------------------------------------------------------Menu--------------------------------------------------
-
+        //------------------------------------------------------------------PopupMenu--------------------------------------------------
         jFrame.add(jPanel); // добавляем панель на форму
 
         JPopupMenu jPopupMenu = new JPopupMenu(); // добавляем меню по щелчку на панели
@@ -69,6 +68,28 @@ public class Main {
         jPopupMenu.add(exit);
 
         jPanel.setComponentPopupMenu(jPopupMenu); // добавление меню на нашу панель
+        jFrame.revalidate(); // обновить прорисовку компонентов
+
+        //------------------------------------------------------------------ToolBar--------------------------------------------------
+        JToolBar jToolBar = new JToolBar("ToolBar"); // создаём переносное меню (ТулБар)
+
+        JButton oneButTool = new JButton("first"); // первая кнопка
+        oneButTool.setToolTipText("One Buttton Tool Bar"); // подсказка при наведении
+        jToolBar.add(oneButTool); // добавляем кнопку в ТулБар
+
+        jToolBar.add(new JButton("two")); // вторая кнопка
+        jToolBar.addSeparator(); // разделитель
+
+        // добавляем кнопку и к ней действие
+        JButton exitButTool = (JButton) jToolBar.add(new JButton("exit")); // передаем ссылку на созданую кнопку в ТулБаре
+        exitButTool.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0); // действие "выход из программы"
+            }
+        });
+
+        jPanel.add(jToolBar); // добавляем ТулБар на панель
         jFrame.revalidate(); // обновить прорисовку компонентов
     }
 
