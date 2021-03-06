@@ -11,8 +11,8 @@ public class Main {
     static JPanel jPanel = new JPanel(); // наша панель
 
     public static void main(String[] args) {
-        jFrame.add(jPanel); // добавляем панель на форму
 
+        //-------------------------------------------------------------------------------Menu--------------------------------------------------
         JMenuBar jMenuBar = new JMenuBar(); // создание основного меню
 
         JMenu file = new JMenu("File"); // создаем вкладки
@@ -57,6 +57,18 @@ public class Main {
         edit.add(but3);
 
         jFrame.setJMenuBar(jMenuBar); // добавление меню на наш фрейм(окно/программу)
+        jFrame.revalidate(); // обновить прорисовку компонентов
+
+        //-------------------------------------------------------------------------------Menu--------------------------------------------------
+
+        jFrame.add(jPanel); // добавляем панель на форму
+
+        JPopupMenu jPopupMenu = new JPopupMenu(); // добавляем меню по щелчку на панели
+        jPopupMenu.add(new JMenuItem("one")); // добавляем на неё кнопки
+        jPopupMenu.add(new JMenuItem("two"));
+        jPopupMenu.add(exit);
+
+        jPanel.setComponentPopupMenu(jPopupMenu); // добавление меню на нашу панель
         jFrame.revalidate(); // обновить прорисовку компонентов
     }
 
